@@ -1,6 +1,9 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Modal } from 'react-native';
 import Ionicons from 'react-native-vector-icons/Ionicons';
+
+import OneSignal from 'react-native-onesignal';
+
 import { connect } from 'react-redux';
 
 import { 
@@ -34,8 +37,21 @@ function Home() {
   const[amountIsVisible, setAmountIsVisible] = useState(true);
   const[reminderIsVisible, setReminderIsVisible] = useState(false);
 
+  useEffect(() => {
+    OneSignal.init('a2d4ea40-ddca-4b03-b040-1d6aa0597e11');
+
+    OneSignal.addEventListener('opened', onOpened);
+
+    return () => OneSignal.removeEventListener('opened', onOpened);
+  },[])
+
   const handleShowAmount = () => {
     setAmountIsVisible(!amountIsVisible);
+  }
+
+  const onOpened = (result: any) => {
+    console.log('Mensagem: ', result.notification.payload.body);
+    console.log('Resultado', result)
   }
 
   return (
