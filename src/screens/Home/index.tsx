@@ -20,10 +20,7 @@ import {
   Amount, 
   SectionText,
   ContainerSpeak,
-  TextLiveSpeak,
-  ModalContainer,
-  ModalContent,
-  ModalText
+  TextLiveSpeak
 } from './styles';
 
 import avatarImage from '../../assets/avatar.png';
@@ -31,6 +28,7 @@ import settings from '../../assets/settings.png';
 import eyeIcon from '../../assets/visibility.png';
 
 import Button from '../../components/Button';
+import ModalView from '../../components/ModalView';
 
 function Home() {
   const[isVisible, setIsVisible] = useState(false);
@@ -83,11 +81,7 @@ function Home() {
         onRequestClose={() => setIsVisible(false)}
         transparent
       >
-        <ModalContainer>
-          {/* <ModalContent>
-            <ModalText>Teste Modal</ModalText>
-          </ModalContent> */}
-        </ModalContainer>
+        <ModalView goBack={() => setIsVisible(false)} />
       </Modal>
     </Container>
   );

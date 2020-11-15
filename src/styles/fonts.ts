@@ -1,8 +1,8 @@
 export default {
-  megabig: 36,
-  bigger: 22,
-  big: 16,
-  regular: '14px',
-  small: 12,
-  smaller: 11,
+  megabig: '36px',
+  bigger: '22px',
+  big: '18px',
+  regular: '16px',
+  small: '14px',
+  smaller: '12px',
 }

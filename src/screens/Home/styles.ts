@@ -52,7 +52,7 @@ export const ContainerText = styled.View`
 
 export const Name = styled.Text`
   font-family: 'Poppins-Bold';
-  font-size: 18px;
+  font-size: ${fonts.big};
   color: ${colors.black};
 `;
 
@@ -63,7 +63,7 @@ export const EditProfile = styled.TouchableOpacity`
 
 export const EditProfileText = styled.Text`
   font-family: 'Poppins-Regular';
-  font-size: 14px;
+  font-size: ${fonts.small};
   color: ${colors.black};
 `;
 
@@ -85,7 +85,7 @@ export const ContainerAmount = styled.View`
 
 export const AmountText = styled.Text`
   font-family: 'Poppins-Regular';
-  font-size: 14px;
+  font-size: ${fonts.small};
   color: ${colors.black};
 `;
 
@@ -99,13 +99,13 @@ export const ContentAmount = styled.View`
 
 export const Amount = styled.Text`
   font-family: 'Poppins-Bold';
-  font-size: 36px;
+  font-size: ${fonts.megabig};
   color: ${colors.blue};
 `;
 
 export const SectionText = styled.Text`
   font-family: 'Poppins-Bold';
-  font-size: 16px;
+  font-size: ${fonts.regular};
   color: ${colors.black};
 
   padding-top: 20px;
@@ -120,11 +120,14 @@ export const ContainerSpeak = styled.TouchableOpacity`
 
   justify-content: center;
   align-items: center;
+
+  border-top-right-radius: 8px;
+  border-top-left-radius: 8px;
 `;
 
 export const Icon = styled.Text`
   font-family: 'Poppins-Regular';
-  font-size: 14px;
+  font-size: ${fonts.small};
   color: ${colors.black};
 
   line-height: 12px;
@@ -134,26 +137,6 @@ export const Icon = styled.Text`
 
 export const TextLiveSpeak = styled.Text`
   font-family: 'Poppins-Regular';
-  font-size: 14px;
+  font-size: ${fonts.small};
   color: ${colors.black};
 `;
-
-export const ModalContainer = styled.View`
-  width: 100%;
-  flex: 1;
-
-  margin-top: 90px;
-  
-  background-color: ${colors.red};
-`;
-
-export const ModalContent = styled.View`
-  width: 100%;
-  flex: 1;
-  background-color: ${colors.black};
-`;
-
-export const ModalText = styled.Text`
-  color: ${colors.black};
-`;
-
