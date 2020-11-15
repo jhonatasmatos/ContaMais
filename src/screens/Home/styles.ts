@@ -81,6 +81,7 @@ export const ContainerAmount = styled.View`
   padding: 14px 26px 12px 26px;
 
   border-bottom-width: 1px;
+  border-color: ${colors.lighter};
 `;
 
 export const AmountText = styled.Text`

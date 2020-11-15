@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Image, Modal } from 'react-native';
+import { Modal } from 'react-native';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import { connect } from 'react-redux';
 
@@ -26,10 +26,17 @@ import {
 
 import avatarImage from '../../assets/avatar.png';
 import Button from '../../components/Button';
-import ModalView from '../../components/ModalView';
+import ModalVirtualRoom from '../../components/ModalVirtualRoom';
+import ModalReminder from '../../components/ModalReminder';
 
 function Home() {
   const[isVisible, setIsVisible] = useState(false);
+  const[amountIsVisible, setAmountIsVisible] = useState(true);
+  const[reminderIsVisible, setReminderIsVisible] = useState(false);
+
+  const handleShowAmount = () => {
+    setAmountIsVisible(!amountIsVisible);
+  }
 
   return (
     <Container>
@@ -46,7 +53,7 @@ function Home() {
           </EditProfile>
         </ContainerText>
 
-        <SettingsButton onPress={() => {}}>
+        <SettingsButton onPress={handleShowAmount}>
           <Ionicons name='menu' size={24} />
         </SettingsButton>
       </Header>
@@ -55,9 +62,9 @@ function Home() {
         <AmountText>Saldo disponível</AmountText>
         
         <ContentAmount>
-          <Amount>{`R$ 1222,00`}</Amount>
-          <ShowAmount onPress={() => {}}>
-            <Ionicons style={{ paddingLeft: 12, paddingBottom: 10 }} name='eye' size={24} />
+          <Amount>{ amountIsVisible ? `R$ 1222,00` : `R$ *******`}</Amount>
+          <ShowAmount onPress={handleShowAmount}>
+            <Ionicons style={{ paddingLeft: 12, paddingBottom: 10 }} name={amountIsVisible ? 'eye' : 'eye-off'} size={24} />
           </ShowAmount>
         </ContentAmount>
       </ContainerAmount>
@@ -66,7 +73,7 @@ function Home() {
       
       <Content>
         <Button icon='barcode' title='Pague um boleto' onPress={() => {}} />
-        <Button icon='addAlert' title='Adicionar um lembrete' onPress={() => {}} />
+        <Button icon='addAlert' title='Seus lembretes' onPress={() => setReminderIsVisible(true)} />
         <Button icon='compareArrows' title='Transfira para alguém' onPress={() => {}} />
       </Content>
 
@@ -81,7 +88,16 @@ function Home() {
         onRequestClose={() => setIsVisible(false)}
         transparent
       >
-        <ModalView goBack={() => setIsVisible(false)} />
+        <ModalVirtualRoom goBack={() => setIsVisible(false)} />
+      </Modal>
+
+      <Modal
+        visible={reminderIsVisible}
+        animationType="slide"
+        onRequestClose={() => setReminderIsVisible(false)}
+        transparent
+      >
+        <ModalReminder goBack={() => setReminderIsVisible(false)} />
       </Modal>
     </Container>
   );
