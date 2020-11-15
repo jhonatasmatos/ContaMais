@@ -53,7 +53,7 @@ export const ContainerText = styled.View`
 export const Name = styled.Text`
   font-family: 'Poppins-Bold';
   font-size: ${fonts.big};
-  color: ${colors.black};
+  color: ${colors.white};
 `;
 
 export const EditProfile = styled.TouchableOpacity`
@@ -91,16 +91,20 @@ export const AmountText = styled.Text`
 
 export const ContentAmount = styled.View`
   width: 100%;
+  height: 54px;
 
   flex-direction: row;
   align-items: center;
-  justify-content: space-between;
 `;
 
 export const Amount = styled.Text`
   font-family: 'Poppins-Bold';
   font-size: ${fonts.megabig};
   color: ${colors.blue};
+`;
+
+export const ShowAmount = styled.TouchableOpacity`
+
 `;
 
 export const SectionText = styled.Text`

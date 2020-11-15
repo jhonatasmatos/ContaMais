@@ -17,16 +17,14 @@ import {
   ContainerAmount,
   AmountText,
   ContentAmount,
-  Amount, 
+  Amount,
+  ShowAmount, 
   SectionText,
   ContainerSpeak,
   TextLiveSpeak
 } from './styles';
 
 import avatarImage from '../../assets/avatar.png';
-import settings from '../../assets/settings.png';
-import eyeIcon from '../../assets/visibility.png';
-
 import Button from '../../components/Button';
 import ModalView from '../../components/ModalView';
 
@@ -48,8 +46,8 @@ function Home() {
           </EditProfile>
         </ContainerText>
 
-        <SettingsButton>
-          <Image style={{ width: 18, height: 18 }} source={settings} />
+        <SettingsButton onPress={() => {}}>
+          <Ionicons name='menu' size={24} />
         </SettingsButton>
       </Header>
 
@@ -58,7 +56,9 @@ function Home() {
         
         <ContentAmount>
           <Amount>{`R$ 1222,00`}</Amount>
-          <Image style={{ width: 24, height: 18 }} source={eyeIcon} />
+          <ShowAmount onPress={() => {}}>
+            <Ionicons style={{ paddingLeft: 12, paddingBottom: 10 }} name='eye' size={24} />
+          </ShowAmount>
         </ContentAmount>
       </ContainerAmount>
 
