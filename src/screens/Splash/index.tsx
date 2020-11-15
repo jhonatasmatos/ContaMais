@@ -11,8 +11,8 @@ const Splash: React.FC = () => {
 
   useEffect(() => {
     const timer = setTimeout(() => {
-      navigation.navigate('Home');
-    }, 2000);
+      navigation.navigate('Main');
+    }, 3000);
     return () => clearTimeout(timer);
   },[])
 
