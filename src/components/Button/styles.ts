@@ -10,7 +10,7 @@ export const Container = styled(RectButton)`
 
   padding: 0 20px;
 
-  background-color: ${colors.blue};
+  background-color: ${colors.darkBlue};
 
   margin-bottom: 20px;
 
