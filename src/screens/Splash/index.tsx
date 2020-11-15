@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import { useNavigation } from '@react-navigation/native';
 import { Image } from 'react-native';
 
-import { Container, Text } from './styles';
+import LinearGradient from 'react-native-linear-gradient';
 
 import contaLogo from '../../assets/logo.png';
 
@@ -17,15 +17,19 @@ const Splash: React.FC = () => {
   },[])
 
   return(
-    <Container>
+    <LinearGradient colors={['#ED6663', '#43658B']} 
+      style={{ 
+        flex: 1,
+        alignItems: 'center',
+        justifyContent: 'center'
+      }}
+    >
       <Image
         source={contaLogo}
-        style={{ width: 150, height: 250 }}
+        style={{ width: 274, height: 72 }}
         resizeMode='stretch'
       />
-
-      <Text>Impulsionando grandes ideias</Text>
-    </Container>
+    </LinearGradient>
   );
 }
 
