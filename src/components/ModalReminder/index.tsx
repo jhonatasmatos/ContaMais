@@ -136,7 +136,7 @@ const ModalReminder: React.FC<ModalProps> = ({ goBack }) => {
 
     useEffect(() => {
       const timer = setTimeout(() => {
-        Tts.speak('Olá, esta é a sua páginade lembretes');
+        Tts.speak('Olá, esta é a sua página de lembretes');
         Tts.speak('Adicione lembretes para não se perder com as contas');
         Tts.speak('Para adicionar um novo lembrete é só clicar no botão');
         Tts.speak('Para ouvir novamente clique no botão ao lado');
@@ -187,7 +187,7 @@ const ModalReminder: React.FC<ModalProps> = ({ goBack }) => {
           top: -100
         }}>
         <TitleHelp>Boas Vindas</TitleHelp>
-        <TextHelp>Olá, esta é a sua páginade lembretes</TextHelp>
+        <TextHelp>Olá, esta é a sua página de lembretes</TextHelp>
       </Animated.View>
 
       <Animated.View 

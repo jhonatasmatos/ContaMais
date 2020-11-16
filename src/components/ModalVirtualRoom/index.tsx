@@ -1,6 +1,8 @@
-import React, { useState } from 'react';
+import React, { useState, useMemo } from 'react';
 import { ScrollView, Animated } from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome5';
+
+import { getHours, getMinutes } from 'date-fns'
 
 import { 
   Container,
@@ -57,6 +59,8 @@ const ModalVirtualRoom: React.FC<ModalProps> = ({ goBack }) => {
     }
   });
 
+  const fullHour = useMemo(() => `${getHours(Date.now())}:${getMinutes(Date.now())}`, [getHours, getMinutes]);
+
   return(
     <Container>
       <GoBackButton onPress={goBack}>
@@ -100,7 +104,7 @@ const ModalVirtualRoom: React.FC<ModalProps> = ({ goBack }) => {
               Horário previsto para atendimento
             </EstimatedTimeText>
 
-            <EstimatedTime>13:31</EstimatedTime>
+            <EstimatedTime>{fullHour}</EstimatedTime>
           </ContainerEstimatedTime>
         )}
       </ContainerLoading>
