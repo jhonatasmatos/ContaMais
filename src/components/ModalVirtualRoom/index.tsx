@@ -1,5 +1,5 @@
-import React from 'react';
-import { ScrollView, Image } from 'react-native';
+import React, { useState } from 'react';
+import { ScrollView, Animated } from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome5';
 
 import { 
@@ -10,7 +10,6 @@ import {
   TipsText,
   ContainerLoading,
   Loading,
-  LoadingInternal,
   ContainerEstimatedTime,
   EstimatedTimeText,
   EstimatedTime,
@@ -19,7 +18,9 @@ import {
   ContainerTextNews,
   TextNews,
   ReadingLink,
-  ReadingText
+  ReadingText,
+  ButtonGoLive,
+  ButtonGoLiveText
 } from './styles';
 
 import news1 from '../../assets/news1.png';
@@ -31,6 +32,31 @@ interface ModalProps{
 }
 
 const ModalVirtualRoom: React.FC<ModalProps> = ({ goBack }) => {
+  const [width, setWidth] = useState(new Animated.Value(10));
+  const [finished, setFinished] = useState(false);
+
+  Animated.sequence([
+    Animated.timing(width, {
+      toValue: 180,
+      duration: 1500,
+      delay: 4000,
+      useNativeDriver: false,
+    }),
+
+    Animated.timing(width, {
+      toValue: 284,
+      duration: 1500,
+      useNativeDriver: false,
+    })
+  ]).start(({ finished }) => {
+    if (finished) {
+      const timer = setTimeout(() => {
+        setFinished(true);
+      }, 500);
+      return () => clearTimeout(timer);
+    }
+  });
+
   return(
     <Container>
       <GoBackButton onPress={goBack}>
@@ -49,18 +75,34 @@ const ModalVirtualRoom: React.FC<ModalProps> = ({ goBack }) => {
 
       <ContainerLoading>
         <Loading>
-          <LoadingInternal>
-            <Icon name='walking' size={14} />
-          </LoadingInternal>
+          <Animated.View 
+            style={{
+              width: width,
+              height: 20,
+              borderRadius: 4,
+              backgroundColor: '#fff',
+              margin: 6,
+              paddingHorizontal: 4,
+              paddingVertical: 2,
+              alignItems: 'flex-end'
+            }}>
+              <Icon name='walking' size={14} />
+          </Animated.View>
         </Loading>
 
-        <ContainerEstimatedTime>
-          <EstimatedTimeText>
-            Horário previsto para atendimento
-          </EstimatedTimeText>
+        { finished ? (
+          <ButtonGoLive>
+            <ButtonGoLiveText>Ir para o atendimento</ButtonGoLiveText>
+          </ButtonGoLive> 
+        ): (
+          <ContainerEstimatedTime>
+            <EstimatedTimeText>
+              Horário previsto para atendimento
+            </EstimatedTimeText>
 
-          <EstimatedTime>13:31</EstimatedTime>
-        </ContainerEstimatedTime>
+            <EstimatedTime>13:31</EstimatedTime>
+          </ContainerEstimatedTime>
+        )}
       </ContainerLoading>
         <TitleWaitRoom>
           Enquanto espera, que tal se informar com notícias do mundo de finanças?

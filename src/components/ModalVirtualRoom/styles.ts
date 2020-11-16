@@ -1,3 +1,4 @@
+import { RectButton } from 'react-native-gesture-handler';
 import styled from 'styled-components/native';
 
 import { colors, fonts } from '../../styles/index';
@@ -148,4 +149,21 @@ export const ReadingText = styled.Text`
   font-family: 'Poppins-Regular';
   font-size: ${fonts.smaller};
   color: ${colors.black};
+`;
+
+export const ButtonGoLive = styled(RectButton)`
+  width: 286px;
+  height: 40px;
+  border-radius: 8px;
+
+  align-items: center;
+  justify-content: center;
+
+  background-color: #FFA372;
+`;
+
+export const ButtonGoLiveText = styled.Text`
+  font-family: 'Poppins-Regular';
+  font-size: ${fonts.small};
+  color: ${colors.white};
 `;

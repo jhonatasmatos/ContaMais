@@ -1,6 +1,8 @@
-import React, { useEffect, useState, useRef } from 'react';
-import { ScrollView, Image, Animated, View } from 'react-native';
+import React, { useEffect, useRef } from 'react';
+import { ScrollView, Image, Animated } from 'react-native';
 import Ionicons from 'react-native-vector-icons/Ionicons';
+
+import Tts from 'react-native-tts';
 
 import voiceIcon from '../../assets/record_voice_over_2.png';
 
@@ -63,74 +65,85 @@ const ModalReminder: React.FC<ModalProps> = ({ goBack }) => {
     Animated.sequence([
       Animated.timing(tip1, {
         toValue: 1,
-        duration: 500,
+        duration: 1500,
         delay: 4000,
-        useNativeDriver: true
+        useNativeDriver: true,
       }),
 
       Animated.timing(tip1, {
         toValue: 0,
-        duration: 500,
-        delay: 4000,
-        useNativeDriver: true
+        duration: 1500,
+        delay: 3000,
+        useNativeDriver: true,
       }),
 
       Animated.timing(tip2, {
         toValue: 1,
-        duration: 500,
-        delay: 4000,
+        duration: 1500,
+        delay: 3000,
         useNativeDriver: true
       }),
 
       Animated.timing(tip2, {
         toValue: 0,
-        duration: 500,
-        delay: 4000,
+        duration: 1500,
+        delay: 3000,
         useNativeDriver: true
       }),
 
       Animated.timing(tip3, {
         toValue: 1,
-        duration: 500,
+        duration: 1500,
         delay: 4000,
         useNativeDriver: true
       }),
 
       Animated.timing(tip3, {
         toValue: 0,
-        duration: 500,
+        duration: 1500,
         delay: 4000,
         useNativeDriver: true
       }),
 
       Animated.timing(tip4, {
         toValue: 1,
-        duration: 500,
+        duration: 1500,
         delay: 4000,
         useNativeDriver: true
       }),
 
       Animated.timing(tip4, {
         toValue: 0,
-        duration: 500,
-        delay: 4000,
+        duration: 1500,
+        delay: 3000,
         useNativeDriver: true
       }),
 
       Animated.timing(tip5, {
         toValue: 1,
-        duration: 500,
-        delay: 4000,
+        duration: 1500,
+        delay: 3000,
         useNativeDriver: true
       }),
 
       Animated.timing(tip5, {
         toValue: 0,
         duration: 500,
-        delay: 4000,
+        delay: 3000,
         useNativeDriver: true
       }),
     ]).start();
+
+    useEffect(() => {
+      const timer = setTimeout(() => {
+        Tts.speak('Olá, esta é a sua páginade lembretes');
+        Tts.speak('Adicione lembretes para não se perder com as contas');
+        Tts.speak('Para adicionar um novo lembrete é só clicar no botão');
+        Tts.speak('Para ouvir novamente clique no botão ao lado');
+        Tts.speak('E para voltar na página anterior clique aqui');
+      }, 4000);
+      return () => clearTimeout(timer);
+    },[]);
 
   return(
     <Container>
