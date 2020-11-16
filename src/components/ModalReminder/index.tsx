@@ -1,7 +1,8 @@
-import React from 'react';
-import { ScrollView, Image } from 'react-native';
+import React, { useEffect, useRef } from 'react';
+import { ScrollView, Image, Animated } from 'react-native';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 
+import Tts from 'react-native-tts';
 
 import voiceIcon from '../../assets/record_voice_over_2.png';
 
@@ -15,7 +16,11 @@ import {
   ReminderDate,
   VoiceButton,
   ContainerSpeak,
-  TextLiveSpeak
+  TextLiveSpeak,
+  TitleHelp,
+  TextHelp,
+  ButtonCloseTip,
+  ButtonTextTip
 } from './styles';
 
 const reminders = [
@@ -50,6 +55,96 @@ interface ModalProps{
 }
 
 const ModalReminder: React.FC<ModalProps> = ({ goBack }) => {
+
+  const tip1 = useRef(new Animated.Value(0)).current;
+  const tip2 = useRef(new Animated.Value(0)).current;
+  const tip3 = useRef(new Animated.Value(0)).current;
+  const tip4 = useRef(new Animated.Value(0)).current;
+  const tip5 = useRef(new Animated.Value(0)).current;
+
+    Animated.sequence([
+      Animated.timing(tip1, {
+        toValue: 1,
+        duration: 1500,
+        delay: 4000,
+        useNativeDriver: true,
+      }),
+
+      Animated.timing(tip1, {
+        toValue: 0,
+        duration: 1500,
+        delay: 3000,
+        useNativeDriver: true,
+      }),
+
+      Animated.timing(tip2, {
+        toValue: 1,
+        duration: 1500,
+        delay: 3000,
+        useNativeDriver: true
+      }),
+
+      Animated.timing(tip2, {
+        toValue: 0,
+        duration: 1500,
+        delay: 3000,
+        useNativeDriver: true
+      }),
+
+      Animated.timing(tip3, {
+        toValue: 1,
+        duration: 1500,
+        delay: 4000,
+        useNativeDriver: true
+      }),
+
+      Animated.timing(tip3, {
+        toValue: 0,
+        duration: 1500,
+        delay: 4000,
+        useNativeDriver: true
+      }),
+
+      Animated.timing(tip4, {
+        toValue: 1,
+        duration: 1500,
+        delay: 4000,
+        useNativeDriver: true
+      }),
+
+      Animated.timing(tip4, {
+        toValue: 0,
+        duration: 1500,
+        delay: 3000,
+        useNativeDriver: true
+      }),
+
+      Animated.timing(tip5, {
+        toValue: 1,
+        duration: 1500,
+        delay: 3000,
+        useNativeDriver: true
+      }),
+
+      Animated.timing(tip5, {
+        toValue: 0,
+        duration: 500,
+        delay: 3000,
+        useNativeDriver: true
+      }),
+    ]).start();
+
+    useEffect(() => {
+      const timer = setTimeout(() => {
+        Tts.speak('Olá, esta é a sua páginade lembretes');
+        Tts.speak('Adicione lembretes para não se perder com as contas');
+        Tts.speak('Para adicionar um novo lembrete é só clicar no botão');
+        Tts.speak('Para ouvir novamente clique no botão ao lado');
+        Tts.speak('E para voltar na página anterior clique aqui');
+      }, 4000);
+      return () => clearTimeout(timer);
+    },[]);
+
   return(
     <Container>
       <GoBackButton onPress={goBack}>
@@ -71,7 +166,7 @@ const ModalReminder: React.FC<ModalProps> = ({ goBack }) => {
 
       </ScrollView>
 
-      <VoiceButton style={{ elevation: 2 }}>
+      <VoiceButton style={{ elevation: 2 }} onPress={() => {}}>
         <Image source={voiceIcon} style={{ width: 18, height: 18 }} />
       </VoiceButton>
 
@@ -79,6 +174,87 @@ const ModalReminder: React.FC<ModalProps> = ({ goBack }) => {
         <Ionicons name='chevron-up-outline' size={14} />
         <TextLiveSpeak>Adicionar um novo lembrete</TextLiveSpeak>
       </ContainerSpeak>
+
+      <Animated.View 
+        style={{
+          width: 400,
+          height: 290,
+          borderBottomLeftRadius: 190,
+          borderBottomRightRadius: 190,
+          backgroundColor: '#ED6663',
+          opacity: tip1,
+          position: 'absolute',
+          top: -100
+        }}>
+        <TitleHelp>Boas Vindas</TitleHelp>
+        <TextHelp>Olá, esta é a sua páginade lembretes</TextHelp>
+      </Animated.View>
+
+      <Animated.View 
+        style={{
+          width: 400,
+          height: 290,
+          borderTopLeftRadius: 180,
+          borderTopRightRadius: 180,
+          backgroundColor: '#ED6663',
+          opacity: tip2,
+          position: 'absolute',
+          bottom: -90
+        }}>
+
+        <TitleHelp> </TitleHelp>
+        <TextHelp>Adicione lembretes para não se perder com as contas</TextHelp>
+      </Animated.View>
+
+      <Animated.View 
+        style={{
+          width: 400,
+          height: 290,
+          borderBottomLeftRadius: 190,
+          borderBottomRightRadius: 190,
+          backgroundColor: '#ED6663',
+          opacity: tip3,
+          position: 'absolute',
+          top: -100
+        }}>
+        <TitleHelp>Dica:</TitleHelp>
+        <TextHelp>Para adicionar um novo lembrete é só clicar no botão</TextHelp>
+      </Animated.View>
+
+      <Animated.View 
+        style={{
+          width: 400,
+          height: 290,
+          borderTopLeftRadius: 180,
+          borderTopRightRadius: 180,
+          backgroundColor: '#ED6663',
+          opacity: tip4,
+          position: 'absolute',
+          bottom: -90
+        }}>
+
+        <TitleHelp> </TitleHelp>
+        <TextHelp>Para ouvir novamente clique no botão ao lado</TextHelp>
+      </Animated.View>
+
+      <Animated.View 
+        style={{
+          width: 400,
+          height: 290,
+          borderBottomLeftRadius: 190,
+          borderBottomRightRadius: 190,
+          backgroundColor: '#ED6663',
+          opacity: tip5,
+          position: 'absolute',
+          top: -100
+        }}>
+        <TitleHelp> </TitleHelp>
+        <TextHelp>E para voltar na página anterior clique aqui</TextHelp>
+        
+        <ButtonCloseTip onPress={() => {}}>
+          <ButtonTextTip>{`< Seus lembretes`}</ButtonTextTip>
+        </ButtonCloseTip>
+      </Animated.View>
     </Container>
   );
 }

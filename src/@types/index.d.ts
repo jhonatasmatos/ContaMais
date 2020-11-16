@@ -1,5 +1,6 @@
 declare module '*.png';
 
+declare module 'react-native-tts';
 declare module 'react-native-onesignal' {
 
   enum InFocusDisplayOption {

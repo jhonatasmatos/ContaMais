@@ -10,6 +10,8 @@ target 'ContaMais' do
 
   pod 'react-native-onesignal', :path => '../node_modules/react-native-onesignal'
 
+  pod 'TextToSpeech', :path => '../node_modules/react-native-tts'
+
   target 'ContaMaisTests' do
     inherit! :complete
     # Pods for testing

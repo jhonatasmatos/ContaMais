@@ -98,3 +98,42 @@ export const TextLiveSpeak = styled.Text`
   font-size: ${fonts.small};
   color: ${colors.black};
 `;
+
+export const TitleHelp = styled.Text`
+  font-family: 'Poppins-Bold';
+  font-size: ${fonts.bigger};
+  color: ${colors.white};
+
+  margin-top: 70px;
+  margin-left: 42px;
+`;
+
+export const TextHelp = styled.Text`
+  width: 210px;
+
+  margin-left: 42px;
+
+  font-family: 'Poppins-Regular';
+  font-size: ${fonts.regular};
+  color: ${colors.white};
+`;
+
+export const ButtonCloseTip = styled(RectButton)`
+  width: 136px;
+  height: 32px;
+  border-radius: 4px;
+
+  margin-left: 42px;
+
+  align-items: center;
+  justify-content: center;
+
+  background-color: ${colors.white};
+`;
+
+export const ButtonTextTip = styled.Text`
+  font-family: 'Poppins-Regular';
+  font-size: ${fonts.small};
+  color: ${colors.black};
+`;
+

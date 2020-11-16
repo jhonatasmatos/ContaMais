@@ -113,7 +113,9 @@ function Home() {
         onRequestClose={() => setReminderIsVisible(false)}
         transparent
       >
-        <ModalReminder goBack={() => setReminderIsVisible(false)} />
+        <ModalReminder
+          goBack={() => setReminderIsVisible(false)}
+        />
       </Modal>
     </Container>
   );
